@@ -6,7 +6,6 @@ A very, **very** simple preset manager for  [Ecosystem](https://github.com/Pereg
 After playing with the amazing [Ecosystem](https://github.com/PeregrineLabs/Ecosystem) by [Peregrine*Labs](http://peregrinelabs.com/open-source/) I realized that even if I love to play with the shell and its commands, not everybody is made for that life, and is not that easy to remember the command
 
 ```
-#!bash
 
 eco maya2015,yeti1.3.19,mtoa1.2.0.1,deadline7,vray2.40,qt4.8.2,pyside1.2.2
 ```
@@ -19,19 +18,16 @@ Would you like to do this?
 
 
 ```
-#!bash
 
 ecosystem preset -p maya/2015
 ```
 And get all the necessary plugins and envs based on a preset? Would you like to run
 ```
-#!bash
 
 ecosystem preset -p avatar7/nuke
 ```
 OR
 ```
-#!bash
 ecosystem preset -p avatar7/shot003/maya
 ```
 and get all the specific plugins with the proper versions and then launch your desired software? That's why.
@@ -44,7 +40,6 @@ I like to keep my commands as short and self-descriptive as possible. This one i
 Installation
 =========
 ```
-#!bash
 python setup.py install
 ecosystem preset --help
 ```
@@ -58,7 +53,6 @@ How does it work?
 This software goes to all folders specified in the ``ECO_PRESET_PATH`` (or the default directory, if not specified) does a recursive scan (python ``os.walk()``) to pick up all JSON files within. When found, it will check that these files are valid JSON files, and if so, it will add them to the list of presets as relative paths. Let's say that we have in ``ECO_PRESET_PATH`` the following folder structure:
 
 ```
-#!bash
 
 example
     maya
