@@ -1,0 +1,8 @@
+{
+    "requires": [
+        "nuke9.1",
+        "bokeh1.4.2",
+        "opticalflares1.5"
+    ],
+    "launcher": "nuke"
+}

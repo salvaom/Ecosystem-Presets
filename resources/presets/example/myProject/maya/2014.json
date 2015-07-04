@@ -1,0 +1,9 @@
+{
+    "requires": [
+        "maya2014",
+        "mtoa1.2.1.0",
+        "yeti1.3.18",
+        "deadline7"
+    ],
+    "launcher": "maya"
+}
