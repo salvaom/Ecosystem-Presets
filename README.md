@@ -6,7 +6,7 @@ A very, **very** simple preset manager for  [Ecosystem](https://github.com/Pereg
 After playing with the amazing [Ecosystem](https://github.com/PeregrineLabs/Ecosystem) by [Peregrine*Labs](http://peregrinelabs.com/open-source/) I realized that even if I love to play with the shell and its commands, not everybody is made for that life, and is not that easy to remember the command
 
 ```
-eco maya2015,yeti1.3.19,mtoa1.2.0.1,deadline7,vray2.40,qt4.8.2,pyside1.2.2
+ecosystem -t maya2015 yeti1.3.19 mtoa1.2.0.1 deadline7 vray2.40 qt4.8.2 pyside1.2.2 -r maya
 ```
 
  so I decided to write a small preset manager.
@@ -21,7 +21,6 @@ ecosystem preset -p maya/2015
 ```
 And get all the necessary plugins and envs based on a preset? Would you like to run
 ```
-
 ecosystem preset -p avatar7/nuke
 ```
 OR

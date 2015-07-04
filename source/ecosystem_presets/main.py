@@ -143,7 +143,4 @@ class PresetExtension(EcosystemPlugin):
         preset = args.preset or os.getenv('ECO_PRESET')
         if not preset:
             raise RuntimeError('Preset not specified.')
-        appmanager.launch(
-            preset,
-            extra
-        )
+        appmanager.launch(preset, extra)
