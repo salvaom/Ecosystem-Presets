@@ -63,10 +63,6 @@ class ApplicationManager(object):
         :type preset: str
         :type args: list
         '''
-        if not preset:
-            raise ValueError(
-                'Preset must be specified either with --preset or --from_env'
-            )
         if preset not in self.presets:
             raise ValueError('Preset "%s" not found' % preset)
         preset = self.presets.get(preset)
