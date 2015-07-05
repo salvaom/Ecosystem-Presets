@@ -16,7 +16,7 @@ class ApplicationManager(object):
         self.presets = {}
         self.discover()
 
-    def get_eco_args(self, preset, extra):
+    def get_eco_args(self, preset, run, extra):
         '''Builds depending on the host OS the proper ecosystem command to be
         executed.
 
@@ -31,7 +31,7 @@ class ApplicationManager(object):
         dependencies, launcher = map(preset.data.get, ['requires', 'launcher'])
         args = ['run', '--tools']
         args += dependencies
-        args += ['--run', launcher]
+        args += ['--run', run or launcher]
         args += extra
         return args
 
@@ -54,7 +54,7 @@ class ApplicationManager(object):
                         preset.name = preset_name
                         self.presets[preset_name] = preset
 
-    def launch(self, preset, extra=[], blocking=False):
+    def launch(self, preset, run=None, extra=[], blocking=False):
         '''Launches an ecosystem instance in the system with a built command
         based on a preset and (optional) extra arguments.
 
@@ -67,7 +67,7 @@ class ApplicationManager(object):
             raise ValueError('Preset "%s" not found' % preset)
         preset = self.presets.get(preset)
 
-        args = self.get_eco_args(preset, extra)
+        args = self.get_eco_args(preset, run, extra)
         os.environ['ECO_PRESET'] = str(preset.name)
         self.ecosystem.execute_args(args)
 
@@ -130,6 +130,7 @@ class PresetExtension(EcosystemPlugin):
         exclusive = self.parser.add_mutually_exclusive_group()
         exclusive.add_argument('-l', '--list', action='store_true')
         exclusive.add_argument('-p', '--preset')
+        self.parser.add_argument('-r', '--run', required=False, type=str)
 
     def execute(self, args):
         appmanager = ApplicationManager(self.ecosystem)
@@ -143,4 +144,4 @@ class PresetExtension(EcosystemPlugin):
         preset = args.preset or os.getenv('ECO_PRESET')
         if not preset:
             raise RuntimeError('Preset not specified.')
-        appmanager.launch(preset, extra)
+        appmanager.launch(preset, args.run, extra)
